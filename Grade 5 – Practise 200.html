@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grade 5 – Practise 200</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4eddd;--card:#fbf7ec;--ink:#2a251f;--mut:#7a7165;--line:#e3d9c3;--gr:#2d9c78;--gr2:#cfe9c4;--ye:#f7d98a;--red:#b0452b;--bar:#26231f;--ok:#e1f2d8;--no:#f8ddd5;--lime:#c9ee7b;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171410;--card:#221d17;--ink:#f1e9d8;--mut:#a89d8a;--line:#3a3227;--gr:#37b48c;--gr2:#3f5f3a;--ye:#6f5a1e;--red:#e8876c;--bar:#0e0c0a;--ok:#243a22;--no:#46251d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171410;--card:#221d17;--ink:#f1e9d8;--mut:#a89d8a;--line:#3a3227;--gr:#37b48c;--gr2:#3f5f3a;--ye:#6f5a1e;--red:#e8876c;--bar:#0e0c0a;--ok:#243a22;--no:#46251d;color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bar)}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,system-ui,"Segoe UI",sans-serif}
+header{background:var(--bar);color:#f3ecdc;padding:12px 14px}
+.br b{display:block;letter-spacing:.05em;font-size:15px}.br i{font-style:normal;font-size:11px;letter-spacing:.14em;color:#a79e8c}
+nav{display:flex;gap:8px;margin-top:10px}
+nav button{flex:1;border:0;border-radius:10px;padding:9px 10px;background:#38342e;color:#e8e0cf;font:600 14px system-ui}
+nav button.on{background:var(--lime);color:#1d2a10}
+main{max-width:760px;margin:0 auto;padding:12px 12px 40px}
+button{cursor:pointer}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:8px 12px;font:600 13px system-ui}
+.chip.on{background:var(--gr2);border-color:var(--gr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.lab{display:flex;justify-content:space-between;color:var(--red);font:700 11px system-ui;letter-spacing:.08em;text-transform:uppercase}
+h2,.big{font-family:"Playfair Display",Georgia,serif;line-height:1.25;margin:10px 0}
+h2{font-size:22px}.big{font-size:44px;margin:6px 0}
+.bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--gr);transition:width .3s}
+.play{background:var(--gr);color:#fff;border:0;border-radius:999px;padding:10px 18px;font:700 14px system-ui}
+.play:disabled{opacity:.45}
+.ghost{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px 10px;font:600 13px system-ui}
+.opts{display:grid;gap:10px;margin:12px 0}
+.opt{text-align:left;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:600 16px system-ui}
+.opt.ok{background:var(--ok);border-color:var(--gr)}.opt.no{background:var(--no);border-color:var(--red)}
+.bl{display:inline-block;min-width:72px;border-bottom:2px solid var(--ink);text-align:center}.bl.ok{color:var(--gr);border-color:var(--gr)}.bl.no{color:var(--red);border-color:var(--red)}
+.ti{display:flex;gap:8px;margin:12px 0}
+.ti input{flex:1;min-width:0;font:17px system-ui;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.slot{min-height:54px;border:1.5px dashed var(--line);border-radius:12px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 8px;align-items:center}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.w{border:1.5px solid var(--line);background:var(--ye);color:var(--ink);border-radius:10px;padding:8px 12px;font:600 16px system-ui}.slot .w{background:var(--gr2)}
+.fb{border-radius:12px;padding:12px 14px;margin-top:8px}.fb.ok{background:var(--ok)}.fb.no{background:var(--no)}.fb p{margin:6px 0 0;font-size:15px}
+.row{display:flex;gap:8px;justify-content:space-between;margin-top:10px}
+.mut{color:var(--mut);font-size:14px}.mi{border-top:1px solid var(--line);padding:10px 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="br"><b>Grade 5 Review</b><i>Practise · Listen · Correct</i></div>
+  <nav id="tabs"><button data-s="en">English · 100</button><button data-s="ma">Maths · 100</button></nav>
+</header>
+<main id="app"></main>
+<script>
+const $=s=>document.querySelector(s),syn=window.speechSynthesis,pr=s=>String(s).replace(/'/g,"’"),esc=s=>String(s).replace(/[&<>"]/g,c=>"&#"+c.charCodeAt(0)+";");
+let sub="en",rd=0,S,ac;
+
+/* ---- English: type|question|options|answer|explanation ---- */
+const EN=[
+"mc|She ___ up at six every day.|gets;get;getting|gets|He, she or it + verb with -s.",
+"mc|They ___ their homework in the evening.|do;does;doing|do|They + the base verb.",
+"mc|He ___ watch TV on school days.|doesn't;don't;isn't|doesn't|He + doesn't + base verb.",
+"mc|___ your sister brush her teeth after meals?|Does;Do;Is|Does|Use Does with she.",
+"mc|She ___ late for school.|is never;never is;never are|is never|The adverb goes after the verb be.",
+"mc|How ___ do you visit your grandparents? – Twice a month.|often;long;much|often|How often asks about frequency.",
+"t|My father ___ (watch) the news every night.||watches|After -ch add -es.",
+"t|The baby ___ (cry) a lot.||cries|Consonant + y becomes -ies.",
+"t|We ___ (not have) lessons on Sunday.||don't have;do not have|We + don't + base verb.",
+"mc|Which word ends with the sound /ɪz/?|plays;watches;helps|watches|After ch, sh, s, z the ending is /ɪz/.",
+"mc|Which word ends with the sound /s/?|works;plays;lives|works|After p, t, k, f the ending is /s/.",
+"mc|Which word is stressed correctly?|ˈsometimes;someˈtimes|ˈsometimes|Adverbs of frequency are stressed on the first syllable.",
+"o|Put the words in order.|up;he;at;usually;gets;six|He usually gets up at six.|The adverb goes before the main verb.",
+"o|Put the words in order.|often;how;you;do;go;to;the;library|How often do you go to the library?|Start with How often.",
+"mc|What would you like to be? – I'd like ___ a pilot.|be;to be;being|to be|would like + to + verb.",
+"mc|A person who looks after your teeth is a ___.|dentist;nurse;farmer|dentist|A dentist looks after teeth.",
+"mc|A person who flies a plane is a ___.|pilot;driver;singer|pilot|A pilot flies planes.",
+"mc|A person who grows rice is a ___.|farmer;teacher;vet|farmer|A farmer grows rice and vegetables.",
+"mc|A person who looks after sick animals is a ___.|vet;nurse;artist|vet|A vet is an animal doctor.",
+"mc|___ would you like to be a nurse? – Because I'd like to help sick people.|Why;What;Where|Why|Because answers a Why question.",
+"mc|He'd like ___ a firefighter.|to be;be;being|to be|would like + to + verb.",
+"mc|My sister ___ like to be a singer.|would;does;is|would|would like = want.",
+"t|A person who puts out fires is a ___.||firefighter|A firefighter puts out fires.",
+"t|A person who paints pictures is an ___.||artist|An artist paints pictures.",
+"mc|Which word has the stress on the last syllable?|ˈteacher;ˈdoctor;engiˈneer|engiˈneer|En-gi-NEER has the stress on the last syllable.",
+"o|Put the words in order.|what;would;you;like;to;be;in;the;future|What would you like to be in the future?|Question word first.",
+"o|Put the words in order.|I'd;to;a;like;be;pilot|I'd like to be a pilot.|I'd like to + verb.",
+"t|What would you like ___ be in the future?||to|would like + to + verb.",
+"mc|___ the library? – It's on the ground floor.|Where's;Where are;What's|Where's|Ask about one place with Where's.",
+"mc|The canteen is on the ___ floor.|ground;down;low|ground|The ground floor is at street level.",
+"mc|The gym is on the second floor. Go ___.|upstairs;downstairs;past|upstairs|Upstairs means to a higher floor.",
+"mc|You are on the second floor. The canteen is on the ground floor. Go ___.|downstairs;upstairs;along|downstairs|Downstairs means to a lower floor.",
+"mc|Go ___ the library and turn left.|past;in;at|past|Go past = walk by something.",
+"mc|Go ___ the corridor.|along;above;beside|along|Go along = follow a path.",
+"mc|The music room is on the left. The computer room is on the right. They are ___ each other.|opposite;above;under|opposite|Opposite means face to face.",
+"t|Our classroom is ___ the first floor.||on|Use on with floors.",
+"mc|Which word has the stress on the second syllable?|ˈlibrary;upˈstairs;ˈcanteen|upˈstairs|Up-STAIRS.",
+"mc|Which word has the stress on the second syllable?|ˈplayground;downˈstairs;ˈcorridor|downˈstairs|Down-STAIRS.",
+"o|Put the words in order.|is;where;the;gym|Where is the gym?|Question word first.",
+"o|Put the words in order.|go;and;upstairs;turn;left|Go upstairs and turn left.|Give directions in order.",
+"t|The library is next ___ the canteen.||to|next to = beside.",
+"mc|The first floor is above the ___ floor.|ground;second;third|ground|The ground floor is the lowest.",
+"mc|What school activity ___ Nam like?|does;do;is|does|Use does with Nam.",
+"mc|He likes ___ puzzles.|solving;solve;solves|solving|After like use -ing.",
+"mc|My sister ___ drawing pictures.|likes;like;liking|likes|She + verb-s.",
+"mc|They like ___ chess at break time.|playing;play;plays|playing|After like use -ing.",
+"mc|___ she like singing? – Yes, she does.|Does;Do;Is|Does|Use Does with she.",
+"mc|I ___ like doing experiments.|don't;doesn't;isn't|don't|I + don't.",
+"mc|Does he like dancing? – No, ___.|he doesn't;he don't;he isn't|he doesn't|Short answer: he doesn't.",
+"t|Do they like reading? – Yes, they ___.||do|Short answer: they do.",
+"mc|Which activity do we do in Science?|doing experiments;singing songs;playing football|doing experiments|Science = experiments.",
+"mc|Which activity do we do in Music?|singing;drawing;solving problems|singing|Music = singing.",
+"mc|Which word has the stress on the first syllable?|ˈsolving;exˈperiment;beˈside|ˈsolving|SOL-ving.",
+"o|Put the words in order.|school;what;does;she;activity;like|What school activity does she like?|Question word first.",
+"o|Put the words in order.|likes;he;chess;playing|He likes playing chess.|like + -ing.",
+"t|She likes ___ (draw) pictures.||drawing|After like use -ing.",
+"mc|Where ___ the books? – They're on the desk.|are;is;am|are|Books is plural.",
+"mc|The picture is ___ the sofa, on the wall.|above;under;between|above|Above = higher, not touching.",
+"mc|The cat is sleeping ___ the sofa.|under;above;between|under|Under = below.",
+"mc|The bank is ___ the post office and the bakery.|between;on;behind|between|Between = in the middle of two.",
+"mc|My school is ___ the park.|next to;above;between|next to|Next to = beside.",
+"mc|The teacher stands ___ the class, facing the pupils.|in front of;behind;under|in front of|In front of = at the front.",
+"mc|I sit ___ Nam. He is on my left.|beside;under;above|beside|Beside = at the side of.",
+"mc|Where is the bag? – It's ___ the chair, at the back.|behind;between;above|behind|Behind = at the back of.",
+"t|Where ___ my shoes? – They're under the bed.||are|Shoes is plural.",
+"t|The ball is ___ the box. (inside)||in|in = inside.",
+"mc|Which word has the stress on the second syllable?|ˈunder;aˈbove;ˈtable|aˈbove|a-BOVE.",
+"mc|Which word has the stress on the second syllable?|ˈgarden;beˈside;ˈpicture|beˈside|be-SIDE.",
+"o|Put the words in order.|my;where;shoes;are|Where are my shoes?|Question word first.",
+"o|Put the words in order.|above;lamp;the;table;is;the|The lamp is above the table.|Subject, verb, place.",
+"mc|We ___ to the cinema last night.|went;go;goes|went|Go – went.",
+"mc|Did you ___ the magic show?|see;saw;seen|see|After did use the base verb.",
+"mc|She ___ any bread yesterday.|didn't buy;doesn't buy;didn't bought|didn't buy|didn't + base verb.",
+"t|We ___ (visit) the museum last Sunday.||visited|Add -ed.",
+"t|I ___ (eat) a cake yesterday.||ate|Eat – ate.",
+"t|They ___ (be) at the theatre two days ago.||were|Be – was/were.",
+"mc|The film starts ___ 7.30.|at;on;in|at|Use at with clock times.",
+"mc|My birthday is ___ May.|in;on;at|in|Use in with months.",
+"mc|We have PE ___ Tuesday.|on;in;at|on|Use on with days.",
+"mc|I was born ___ 2015.|in;on;at|in|Use in with years.",
+"mc|He gets up early ___ the morning.|in;on;at|in|Use in the morning.",
+"mc|Which word ends with the sound /t/?|watched;played;wanted|watched|After ch the -ed sounds /t/.",
+"mc|Which word ends with the sound /ɪd/?|visited;helped;cooked|visited|After t or d the -ed sounds /ɪd/.",
+"mc|Which word has the stress on the second syllable?|ˈcinema;ˈbakery;muˈseum|muˈseum|mu-SE-um.",
+"mc|Which word has the stress on the first syllable?|ˈhospital;muˈseum;beˈside|ˈhospital|HOS-pi-tal.",
+"t|Did she buy bread? – No, she ___.||didn't|Short answer: she didn't.",
+"o|Put the words in order.|you;did;go;where;yesterday|Where did you go yesterday?|Question word, did, subject, verb.",
+"o|Put the words in order.|bought;she;bread;the;at;bakery|She bought bread at the bakery.|Subject, verb, object, place.",
+"mc|The elephant is ___ than the tiger.|heavier;heavy;more heavy|heavier|Consonant + y becomes -ier.",
+"mc|This waterfall is ___ than that one.|more beautiful;beautifuler;beautifuller|more beautiful|Long adjectives use more.",
+"mc|Her handwriting is ___ than mine. (good)|better;gooder;more good|better|good – better.",
+"mc|Today's weather is ___ than yesterday's. (bad)|worse;badder;more bad|worse|bad – worse.",
+"t|The lake is ___ (big) than the pond.||bigger|Double the g and add -er.",
+"t|The zoo is ___ (large) than the park.||larger|Add -r to a word ending in e.",
+"t|She sings ___ (beautiful).||beautifully|Adjective + -ly.",
+"t|He walked ___ (slow) up the hill.||slowly|Adjective + -ly.",
+"mc|Tom plays the piano ___.|well;good;goodly|well|good – well.",
+"mc|My brother runs ___.|fast;fastly;more fast|fast|fast is also an adverb.",
+"mc|She is a ___ driver.|careful;carefully;care|careful|An adjective describes a noun.",
+"mc|Which word has the stress on the first syllable?|ˈquickly;beˈside;aˈbove|ˈquickly|QUICK-ly."
+].map(s=>{const [ty,q,o,a,e]=s.split("|");return{sub:"en",ty,q,o:o?o.split(";"):[],a,e}});
+
+/* ---- Maths: generated with a fixed seed ---- */
+let sd=7;const R=n=>Math.floor(((sd=sd*16807%2147483647)-1)/2147483646*n),c=x=>String(+(+x).toFixed(6)),gcd=(a,b)=>b?gcd(b,a%b):a,fr=(n,d)=>{const g=gcd(n,d);n/=g;d/=g;return d==1?""+n:n+"/"+d},D=[2,3,4,5,6,8,10];
+const pf=()=>{let b=D[R(7)],d=D[R(7)],a=1+R(b-1),e=1+R(d-1);return[a,b,e,d]};
+const G=[
+()=>{const n=10+R(90),A=(n/10).toFixed(1),B=R(4)?((n*10+R(19)-9)/100).toFixed(2):A+"0",s=+A<+B?"<":+A>+B?">":"=";return[`Compare: ${A} ___ ${B}`,["<",">","="],s,`Write both with the same decimal places: ${(+A).toFixed(2)} ${s} ${(+B).toFixed(2)}.`]},
+()=>{const m=1+R(9),n=1+R(9);return[`${m}.${n}0 = ___ (shortest form)`,[],`${m}.${n}`,"Zeros at the end of the decimal part can be removed."]},
+()=>{const [a,b,e,d]=pf(),n=a*d+e*b,m=b*d;return[`${a}/${b} + ${e}/${d} = ___ (simplest form)`,[],fr(n,m),`Common denominator ${m}: ${a*d}/${m} + ${e*b}/${m} = ${n}/${m}, simplified: ${fr(n,m)}.`]},
+()=>{let [a,b,e,d]=pf();if(a*d<e*b)[a,b,e,d]=[e,d,a,b];const n=a*d-e*b,m=b*d;return[`${a}/${b} − ${e}/${d} = ___ (simplest form)`,[],fr(n,m),`Common denominator ${m}: ${a*d}/${m} − ${e*b}/${m} = ${n}/${m}, simplified: ${fr(n,m)}.`]},
+()=>{const [a,b,e,d]=pf();return[`${a}/${b} × ${e}/${d} = ___ (simplest form)`,[],fr(a*e,b*d),`Multiply tops and bottoms: ${a*e}/${b*d} = ${fr(a*e,b*d)}.`]},
+()=>{const [a,b,e,d]=pf();return[`${a}/${b} ÷ ${e}/${d} = ___ (simplest form)`,[],fr(a*d,b*e),`Multiply by the reciprocal: ${a}/${b} × ${d}/${e} = ${fr(a*d,b*e)}.`]},
+()=>{const p=[...Array(10).keys()].sort(()=>R(3)-1),i=1+R(3),P=["tenths","hundredths","thousandths"];return[`In ${p[0]}.${p[1]}${p[2]}${p[3]}, the digit ${p[i]} is in the ___ place.`,P,P[i-1],`After the decimal point: tenths, hundredths, thousandths.`]},
+()=>{const n=1000+R(9000),x=(n/1000).toFixed(3),t=R(3),a=[Math.floor(n/1000+.5),(Math.floor(n/100+.5)/10).toFixed(1),(Math.floor(n/10+.5)/100).toFixed(2)][t];return[`Round ${x} to the nearest ${["whole number","tenth","hundredth"][t]}: ___`,[],""+a,`Look at the next digit: 5 or more rounds up, 4 or less stays. ${x} → ${a}.`]},
+()=>{const A=100+R(1900),B=100+R(900);return[`${(A/100).toFixed(2)} + ${(B/100).toFixed(2)} = ___`,[],c((A+B)/100),`Line up the decimal points and add: ${c((A+B)/100)}.`]},
+()=>{const A=500+R(1500),B=100+R(400);return[`${(A/100).toFixed(2)} − ${(B/100).toFixed(2)} = ___`,[],c((A-B)/100),`Line up the decimal points and subtract: ${c((A-B)/100)}.`]},
+()=>{const A=10+R(90),B=1+R(9);return[`${A/10} × ${B/10} = ___`,[],c(A*B/100),`${A} × ${B} = ${A*B}; two decimal places in total → ${c(A*B/100)}.`]},
+()=>{const d=2+R(8),k=2+R(40);return[`${c(d*k/10)} ÷ ${d/10} = ___`,[],""+k,`Multiply both numbers by 10: ${d*k} ÷ ${d} = ${k}.`]},
+()=>{const x=(100+R(900))/100,p=[10,100,1000][R(3)],m=R(2);return[`${x} ${m?"÷":"×"} ${p} = ___`,[],c(m?x/p:x*p),`Move the decimal point ${m?"left":"right"} ${String(p).length-1} place(s).`]},
+()=>{const U=[["ha","m²",1e4],["km²","ha",100],["m²","cm²",1e4],["cm²","mm²",100],["m²","dm²",100]],[a,b,m]=U[R(5)],v=(10+R(90))/10;return[`${v} ${a} = ___ ${b}`,[],c(v*m),`1 ${a} = ${m.toLocaleString("en")} ${b}, so ${v} × ${m.toLocaleString("en")} = ${c(v*m)}.`]},
+()=>{const l=5+R(20),w=3+R(10);return[`A rectangle is ${l} m long and ${w} m wide. Its area is ___ m².`,[],""+l*w,`Area = length × width = ${l} × ${w} = ${l*w} m².`]},
+()=>{const a=(300+R(700))/100,b=(50+R(200))/100;return[`A ribbon is ${a.toFixed(2)} m long. ${b.toFixed(2)} m is used. How many metres are left? ___`,[],c(a-b),`${a.toFixed(2)} − ${b.toFixed(2)} = ${c(a-b)} m.`]}
+];
+const MA=[...Array(100).keys()].map(k=>{const [q,o,a,e]=G[k%16]();return{sub:"ma",ty:o.length?"mc":"t",q,o,a,e}});
+
+/* ---- engine ---- */
+const nm=s=>s.toLowerCase().replace(/[’‘]/g,"'").replace(/[.!?]+$/,"").replace(/\s+/g," ").trim(),
+num=s=>/^-?[\d,]*\.?\d+$/.test(s)?parseFloat(s.replace(/,/g,"")):null,
+ok=(u,A)=>{u=nm(u);return A.split(";").some(a=>{a=nm(a);return num(a)!==null&&num(u)!==null?num(a)===num(u):a.replace(/ /g,"")===u.replace(/ /g,"")})},
+first=q=>q.a.split(";")[0];
+function say(t){if(!syn)return;syn.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";syn.speak(u)}
+function tone(a,b){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();[a,b].forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime+i*.13;o.frequency.value=f;g.gain.value=.08;o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+.11)})}catch(e){}}
+const sayText=q=>q.sub=="ma"?q.q.replace("___",first(q)).replace(/×/g," times ").replace(/÷/g," divided by ").replace(/−/g," minus ").replace(/=/g," equals ").replace(/(\d+)\/(\d+)/g,"$1 over $2"):q.ty=="o"?first(q):q.q.includes("___")?q.q.replace(/\s*\([^)]*\)/g,"").replace("___",first(q)):first(q).replace("ˈ","");
+function newSet(l){const A=sub=="en"?EN:MA;S={l:l||(rd<0?A:A.slice(rd*10,rd*10+10)),i:0,sc:0,ms:[],r:null,b:[]}}
+function grade(u){const q=S.l[S.i],k=q.ty=="mc"?u==q.a:ok(u,q.a);S.r={ok:k,u};if(k)S.sc++;else S.ms.push({q,u});tone(...(k?[660,880]:[300,220]));rPrac();setTimeout(()=>say(sayText(q)),400)}
+
+function rPrac(){const L=S.l,n=L.length;
+const chips=`<div class="chips">${[...Array(10).keys()].map(i=>`<button class="chip${rd==i?" on":""}" data-r="${i}">Round ${i+1}</button>`).join("")}<button class="chip${rd<0?" on":""}" data-r="-1">All 100</button></div>`;
+if(S.i>=n){const pc=Math.round(S.sc/n*100);
+$("#app").innerHTML=chips+`<section class="card"><div class="lab"><span>Result</span></div><div class="big">${S.sc} / ${n}</div><p>${pc}% – ${pc>=80?"Excellent work!":pc>=50?"Good effort. Study the corrections below.":"Keep practising. Read the corrections and try again."}</p>
+${S.ms.length?`<h2>Corrections</h2>${S.ms.map(m=>`<div class="mi"><div>${pr(m.q.ty=="o"?first(m.q):m.q.q.replace("___","<u>"+first(m.q)+"</u>"))}</div><div class="mut">Your answer: <s>${pr(esc(m.u)||"(empty)")}</s> → <strong>${pr(first(m.q))}</strong></div><div class="mut">${pr(m.q.e)}</div></div>`).join("")}<div class="row"><button id="rm" class="play">Retry mistakes</button><button id="rs" class="ghost">Start again</button></div>`:`<p>No mistakes. Perfect!</p>`}
+${rd>=0&&rd<9?`<div class="row"><button id="nr" class="play">Next round</button></div>`:""}</section>`;return}
+const q=L[S.i],r=S.r,bl=`<span class="bl${r?r.ok?" ok":" no":""}">${r?pr(first(q)):""}</span>`;
+let body;
+if(q.ty=="mc")body=`<div class="opts">${q.o.map(o=>`<button class="opt${r?o==q.a?" ok":o==r.u?" no":"":""}" data-o="${esc(o)}"${r?" disabled":""}>${pr(o)}</button>`).join("")}</div>`;
+else if(q.ty=="t")body=`<div class="ti"><input id="in" autocomplete="off" autocapitalize="off" placeholder="Type your answer" value="${r?esc(r.u):""}"${r?" disabled":""}><button id="ck" class="play"${r?" disabled":""}>Check</button></div>`;
+else body=`<div class="slot">${S.b.length?S.b.map(i=>`<button class="w" ${r?"disabled":`data-x="${i}"`}>${pr(q.o[i])}</button>`).join(""):`<span class="mut">Tap the words below</span>`}</div><div class="bank">${r?"":q.o.map((w,i)=>S.b.includes(i)?"":`<button class="w" data-w="${i}">${pr(w)}</button>`).join("")}</div>${r?"":`<button id="ck" class="play">Check</button>`}`;
+$("#app").innerHTML=chips+`<section class="card"><div class="lab"><span>${q.sub=="en"?"English":"Maths"} · ${S.i+1} of ${n}</span><span>✓ ${S.sc} · ✗ ${S.ms.length}</span></div><div class="bar"><i style="width:${S.i/n*100}%"></i></div>
+<h2>${pr(q.q).replace("___",bl)}</h2>${body}
+${r?`<div class="fb ${r.ok?"ok":"no"}"><b>${r.ok?"✓ Correct!":"✗ Not quite"}</b>${r.ok?"":`<div class="mut">Your answer: <s>${pr(esc(r.u)||"(empty)")}</s></div><div>Correct answer: <strong>${pr(first(q))}</strong></div>`}<p>${pr(q.e)}</p><div class="row"><button id="ls" class="ghost">🔊 Listen</button><button id="nx" class="play">${S.i+1>=n?"See result":"Next"}</button></div></div>`:""}</section>`;
+if(!r&&$("#in"))$("#in").focus({preventScroll:true})}
+
+function render(){document.querySelectorAll("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.s==sub));newSet();rPrac()}
+$("#tabs").onclick=e=>{const b=e.target.closest("button");if(!b)return;sub=b.dataset.s;rd=0;render()};
+$("#app").onclick=e=>{const g=s=>e.target.closest(s);let x;
+if(x=g("[data-r]")){rd=+x.dataset.r;newSet();rPrac();return}
+if(x=g("[data-o]")){grade(x.dataset.o);return}
+if(x=g("[data-w]")){S.b.push(+x.dataset.w);rPrac();return}
+if(x=g("[data-x]")){S.b=S.b.filter(i=>i!=x.dataset.x);rPrac();return}
+if(g("#ck")){const q=S.l[S.i],v=q.ty=="o"?S.b.map(i=>q.o[i]).join(" "):$("#in").value;if(v.trim())grade(v);return}
+if(g("#nx")){S.i++;S.r=null;S.b=[];rPrac();scrollTo(0,0);return}
+if(g("#ls")){say(sayText(S.l[S.i]));return}
+if(g("#rm")){newSet(S.ms.map(m=>m.q));rPrac();return}
+if(g("#rs")){newSet();rPrac();return}
+if(g("#nr")){rd++;newSet();rPrac();scrollTo(0,0)}};
+$("#app").onkeydown=e=>{if(e.key=="Enter"){const b=$("#nx")||$("#ck");b&&!b.disabled&&b.click()}};
+render();
+</script>
+</body>
+</html>
